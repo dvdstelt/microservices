@@ -25,7 +25,7 @@ namespace EventualConsistencyDemo
 
             services.AddSignalR(o => o.EnableDetailedErrors = true);
 
-            services.AddScoped(_ => new LiteRepository(Database.DatabaseConnectionstring));
+            // services.AddScoped(_ => new LiteRepository(Shared.Configuration.Database.DatabaseConnectionstring));
             services.AddScoped<MovieTickets>();
          
             services.AddMemoryCache();

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 using NServiceBus;
 using Shared.Commands;
 using Shared.Entities;
+using Yellow.Messages.Commands;
 
 namespace EventualConsistencyDemo.Hubs
 {
@@ -29,9 +30,10 @@ namespace EventualConsistencyDemo.Hubs
 
             var order = new SubmitOrder
             {
-                Theater = Guid.Parse(ticket.TheaterId),
-                Movie = Guid.Parse(ticket.MovieId),
-                Time = ticket.Time,
+                TheaterIdentifier = Guid.Parse(ticket.TheaterId),
+                MovieIdentifier = Guid.Parse(ticket.MovieId),
+                // TODO: Deze fixen
+                //TimeIdentifier = ticket.Time,
                 NumberOfTickets = ticket.NumberOfTickets,
                 UserId = Guid.Parse("218d92c4-9c42-4e61-80fa-198b22461f61") // For now, no other users allowed ;-)
             };

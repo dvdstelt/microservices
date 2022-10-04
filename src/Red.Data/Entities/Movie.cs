@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Shared.Entities
+﻿namespace Red.Data.Entities
 {
     public class Movie
     {
-        public Guid Id { get; set; }
+        public Guid Identifier { get; set; }
         public string UrlTitle { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

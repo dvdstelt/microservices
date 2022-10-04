@@ -10,36 +10,36 @@ namespace Shared.Configuration
 {
     public static class Database
     {
-        public static string DatabaseConnectionstring
+        public static string DatabaseConnectionstring(string databaseName)
         {
-            get
-            {
-                var storagePath = FindStoragePath();
-                Directory.CreateDirectory(storagePath);
-                var databaseLocation = Path.Combine(storagePath, DatabaseName);
-                databaseLocation = $"Filename={databaseLocation}; Connection=shared";
+            var storagePath = FindStoragePath();
+            Directory.CreateDirectory(storagePath);
+            var databaseLocation = Path.Combine(storagePath, databaseName);
+            databaseLocation = $"Filename={databaseLocation}; Connection=shared";
 
-                return databaseLocation;
-            }
+            return databaseLocation;
         }
 
-        public static void Setup()
+        public static void Setup(string databaseName, Action<LiteDatabase> configureDatabase = null)
         {
-            using var db = new LiteDatabase(DatabaseConnectionstring);
-            var movieCollection = db.GetCollection<Movie>("movie");
-            var reviewCollection = db.GetCollection<Review>("review");
-            if (movieCollection.Count() == 0)
-            {
-                var movies = DefaultData.GetDefaultMovies();
-                movieCollection.Insert(movies);
-                reviewCollection.Insert(DefaultData.GetDefaultReviews(movies));
-
-                movieCollection.EnsureIndex(x => x.Id);
-                movieCollection.EnsureIndex(x => x.UrlTitle);
-
-                reviewCollection.EnsureIndex(x => x.Id);
-                reviewCollection.EnsureIndex(x => x.MovieIdentifier);
-            }
+            using var db = new LiteDatabase(DatabaseConnectionstring(databaseName));
+            
+            configureDatabase?.Invoke(db);
+            
+            // var movieCollection = db.GetCollection<Movie>("movie");
+            // var reviewCollection = db.GetCollection<Review>("review");
+            // if (movieCollection.Count() == 0)
+            // {
+            //     var movies = DefaultData.GetDefaultMovies();
+            //     movieCollection.Insert(movies);
+            //     reviewCollection.Insert(DefaultData.GetDefaultReviews(movies));
+            //
+            //     movieCollection.EnsureIndex(x => x.Id);
+            //     movieCollection.EnsureIndex(x => x.UrlTitle);
+            //
+            //     reviewCollection.EnsureIndex(x => x.Id);
+            //     reviewCollection.EnsureIndex(x => x.MovieIdentifier);
+            // }
         }
 
         static string FindStoragePath()
@@ -66,7 +66,8 @@ namespace Shared.Configuration
                 if (parent == null)
                 {
                     // throw for now. if we discover there is an edge then we can fix it in a patch.
-                    throw new Exception($"Unable to determine the storage directory path for the database due to the absence of a solution file. Please create a '{DefaultDatabaseDirectory}' directory in one of this project’s parent directories.");
+                    throw new Exception(
+                        $"Unable to determine the storage directory path for the database due to the absence of a solution file. Please create a '{DefaultDatabaseDirectory}' directory in one of this project’s parent directories.");
                 }
 
                 directory = parent.FullName;
@@ -74,6 +75,5 @@ namespace Shared.Configuration
         }
 
         const string DefaultDatabaseDirectory = ".database";
-        const string DatabaseName = "eventual-consistency.db";
     }
 }

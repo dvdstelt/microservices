@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EventualConsistencyDemo.Models
+﻿namespace Red.Data.Entities
 {
     public class Theater
     {

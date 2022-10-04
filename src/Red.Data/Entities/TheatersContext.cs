@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EventualConsistencyDemo.Models
+﻿namespace Red.Data.Entities
 {
     public class TheatersContext
     {

@@ -21,6 +21,7 @@ var host = Host.CreateDefaultBuilder(args)
     .Build();
 
 // Create the LiteDb database so we can work with some default movies.
-Database.Setup();
+// TODO: This doesn't work anymore now we have multiple services. Figure out if still required.
+// Database.Setup();
 
 await host.RunAsync();
