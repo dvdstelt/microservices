@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NServiceBus;
+using Red.Data.Configuration;
+using ServiceComposer.AspNetCore;
+using ServiceComposer.AspNetCore.Mvc;
 using Shared.Configuration;
 
 namespace EventualConsistencyDemo
@@ -22,10 +25,17 @@ namespace EventualConsistencyDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddViewModelComposition(options =>
+            {
+                // options.AddMvcSupport();
+                options.EnableCompositionOverControllers();
+            });
 
             services.AddSignalR(o => o.EnableDetailedErrors = true);
 
-            // services.AddScoped(_ => new LiteRepository(Shared.Configuration.Database.DatabaseConnectionstring));
+            //services.AddScoped(_ => new LiteRepository(Shared.Configuration.Database.DatabaseConnectionstring));
+            // services.AddScoped<LiteDatabaseFactory>();
+            services.AddScoped<Test>();
             services.AddScoped<MovieTickets>();
          
             services.AddMemoryCache();
@@ -44,6 +54,12 @@ namespace EventualConsistencyDemo
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseEndpoints(builder =>
+            {
+                // ViewModelComposition
+                builder.MapControllers();
+                builder.MapCompositionHandlers();
+            });
 
             app.UseEndpoints(endpoints =>
             {

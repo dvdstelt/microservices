@@ -1,6 +1,4 @@
-using System;
-
-namespace EventualConsistencyDemo.Models
+﻿namespace Website.Models
 {
     public class ErrorViewModel
     {

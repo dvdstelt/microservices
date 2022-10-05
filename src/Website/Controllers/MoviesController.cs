@@ -1,11 +1,7 @@
-﻿using System.Linq;
-using System.Text;
-using EventualConsistencyDemo.Models;
+﻿using System.Text;
 using LiteDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Configuration;
-using Shared.Entities;
 
 namespace EventualConsistencyDemo.Controllers
 {
@@ -13,29 +9,25 @@ namespace EventualConsistencyDemo.Controllers
     {
         private readonly LiteRepository db;
 
-        public MoviesController(LiteRepository db)
-        {
-            this.db = db;
-        }
-
         public ActionResult Index()
         {
-            return View(db.Query<Movie>().ToList());
+            return View();
         }
 
+        [HttpGet("/movies/{movieurl}")]
         public ActionResult Movie(string movieurl)
         {
-            var movie = db.Query<Movie>()
-                            .Where(s => s.UrlTitle == movieurl)
-                            .SingleOrDefault();
+            // var movie = db.Query<Movie>()
+            //                 .Where(s => s.UrlTitle == movieurl)
+            //                 .SingleOrDefault();
+            //
+            // var vm = new MovieViewModel
+            // {
+            //     Movie = movie,
+            //     Theaters = TheatersContext.GetTheaters()
+            // };
 
-            var vm = new MovieViewModel
-            {
-                Movie = movie,
-                Theaters = TheatersContext.GetTheaters()
-            };
-
-            return View(vm);
+            return View();
         }
 
         [HttpPost]

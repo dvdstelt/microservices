@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using LiteDB;
-using Shared.Entities;
 
 namespace Shared.Configuration
 {
@@ -15,32 +14,15 @@ namespace Shared.Configuration
             var storagePath = FindStoragePath();
             Directory.CreateDirectory(storagePath);
             var databaseLocation = Path.Combine(storagePath, databaseName);
-            databaseLocation = $"Filename={databaseLocation}; Connection=shared";
-
-            return databaseLocation;
+            return $"Filename={databaseLocation}; Connection=shared";
         }
 
-        public static void Setup(string databaseName, Action<LiteDatabase> configureDatabase = null)
-        {
-            using var db = new LiteDatabase(DatabaseConnectionstring(databaseName));
-            
-            configureDatabase?.Invoke(db);
-            
-            // var movieCollection = db.GetCollection<Movie>("movie");
-            // var reviewCollection = db.GetCollection<Review>("review");
-            // if (movieCollection.Count() == 0)
-            // {
-            //     var movies = DefaultData.GetDefaultMovies();
-            //     movieCollection.Insert(movies);
-            //     reviewCollection.Insert(DefaultData.GetDefaultReviews(movies));
-            //
-            //     movieCollection.EnsureIndex(x => x.Id);
-            //     movieCollection.EnsureIndex(x => x.UrlTitle);
-            //
-            //     reviewCollection.EnsureIndex(x => x.Id);
-            //     reviewCollection.EnsureIndex(x => x.MovieIdentifier);
-            // }
-        }
+        // public static void Setup(string databaseName, Action<LiteDatabase> configureDatabase = null)
+        // {
+        //     using var db = new LiteDatabase(DatabaseConnectionstring(databaseName));
+        //     
+        //     configureDatabase?.Invoke(db);
+        // }
 
         static string FindStoragePath()
         {

@@ -12,13 +12,11 @@ namespace Website.Handlers
     public class OrderAcceptedHandler : IHandleMessages<OrderAccepted>
     {
         readonly IHubContext<TicketHub> ticketHubContext;
-        private readonly LiteRepository db;
         readonly ILogger<OrderAcceptedHandler> logger;
 
-        public OrderAcceptedHandler(IHubContext<TicketHub> ticketHubContext, LiteRepository db, ILogger<OrderAcceptedHandler> logger)
+        public OrderAcceptedHandler(IHubContext<TicketHub> ticketHubContext, ILogger<OrderAcceptedHandler> logger)
         {
             this.ticketHubContext = ticketHubContext;
-            this.db = db;
             this.logger = logger;
         }
 

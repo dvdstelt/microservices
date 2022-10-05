@@ -1,23 +1,16 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using EventualConsistencyDemo.Models;
 using LiteDB;
-using Shared.Entities;
+using Website.Models;
 
 namespace EventualConsistencyDemo.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly LiteRepository db;
-
-        public HomeController(LiteRepository db)
-        {
-            this.db = db;
-        }
-
+        [HttpGet("/")]
         public IActionResult Index()
         {
-            return View(db.Query<Movie>().ToList());
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

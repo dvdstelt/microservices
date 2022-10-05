@@ -32,5 +32,7 @@ public class SubmitOrderHandler : IHandleMessages<SubmitOrder>
         };
         
         db.Insert(order);
+
+        return Task.CompletedTask;
     }
 }

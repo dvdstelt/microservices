@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using NServiceBus;
 using Shared.Configuration;
+using Yellow.Messages.Commands;
 
 
 var host = Host.CreateDefaultBuilder(args)
@@ -12,7 +13,7 @@ var host = Host.CreateDefaultBuilder(args)
         var endpointConfiguration = new EndpointConfiguration("EventualConsistencyDemo");
         endpointConfiguration.ApplyCommonConfiguration(routingConfig =>
         {
-            routingConfig.RouteToEndpoint(typeof(Shared.Commands.SubmitOrder), "server");
+            routingConfig.RouteToEndpoint(typeof(SubmitOrder), "server");
         });
 
         return endpointConfiguration;

@@ -1,7 +1,6 @@
 ﻿@using System.Web
-@model MovieViewModel
 @{
-    ViewData["Title"] = Model.Movie.Title;
+    ViewData["Title"] = $"{Model.Movie.Title}";
     ViewBag.Layout = "FullPage";
 }
 
@@ -184,7 +183,7 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" id="movieId" name="movieId" value="@Model.Movie.Id"/>
+            <input type="hidden" id="movieId" name="movieId" value="@Model.Movie.Identifier"/>
         </form>
     </div>
 </section>

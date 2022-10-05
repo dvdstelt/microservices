@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using LiteDB;
 using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Caching.Memory;
 using NServiceBus;
-using Shared.Commands;
-using Shared.Entities;
 using Yellow.Messages.Commands;
 
 namespace EventualConsistencyDemo.Hubs

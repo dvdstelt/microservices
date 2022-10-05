@@ -1,11 +1,10 @@
 ﻿@using System.Web
-@model List<Shared.Entities.Movie>
 @{
     ViewData["Title"] = "Home";
 }
 
 <ul class="movies">
-    @foreach (var movie in Model.OrderByDescending(m => m.PopularityScore))
+    @foreach (dynamic movie in Model.Movies) //.OrderByDescending(new Func<int>(m => m.PopularityScore)))
     {
         <li>
             <div class="moviedetails">
