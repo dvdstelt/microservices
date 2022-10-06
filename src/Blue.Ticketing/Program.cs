@@ -1,11 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Blue.Data.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NServiceBus;
 using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using Shared.Configuration;
-using Yellow.Data.Configuration;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
@@ -21,12 +21,12 @@ var host = Host.CreateDefaultBuilder(args)
     .UseSerilog()
     .UseNServiceBus(context =>
     {
-        var endpointConfiguration = new EndpointConfiguration("Yellow.Ticketing").ApplyCommonConfiguration();
+        var endpointConfiguration = new EndpointConfiguration("Blue.Ticketing").ApplyCommonConfiguration();
         endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
-
+        
         endpointConfiguration.RegisterComponents(s =>
         {
-            s.ConfigureComponent(() => new YellowLiteDatabase(), DependencyLifecycle.InstancePerUnitOfWork);
+            s.ConfigureComponent(() => new BlueLiteDatabase(), DependencyLifecycle.InstancePerUnitOfWork);
         });
         
         return endpointConfiguration;
@@ -41,4 +41,4 @@ Log.Information("Press CTRL+C to quit the application...");
 host.Run();
 
 Log.Information("Application shut down...");
-Log.CloseAndFlush();    
+Log.CloseAndFlush();      

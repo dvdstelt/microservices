@@ -6,26 +6,25 @@ using Yellow.Messages.Commands;
 
 namespace Yellow.Ticketing.Handlers;
 
-public class SubmitOrderHandler : IHandleMessages<SubmitOrder>
+public class SubmitLotteryTicketHandler : IHandleMessages<SubmitLotteryTicket>
 {
     static readonly ILog Log = LogManager.GetLogger<SubmitOrderHandler>();
 
     readonly YellowLiteDatabase db;
+    
+    public SubmitLotteryTicketHandler(YellowLiteDatabase db) => this.db = db;
 
-    public SubmitOrderHandler(YellowLiteDatabase db) => this.db = db;
-
-    public Task Handle(SubmitOrder message, IMessageHandlerContext context)
+    public Task Handle(SubmitLotteryTicket message, IMessageHandlerContext context)
     {
         Log.Info($"Order arrived for movie {message.MovieIdentifier}");
 
-        var order = new Order
+        var order = new LotteryTicket
         {
             Identifier = message.OrderIdentifier,
             MovieIdentifier = message.MovieIdentifier,
             TheaterIdentifier = message.TheaterIdentifier,
             UserIdentifier = message.UserId,
             NumberOfTickets = message.NumberOfTickets,
-            MovieTime = message.Time
         };
 
         db.Insert(order);

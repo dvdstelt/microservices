@@ -17,12 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Blue.Data\Blue.Data.csproj" />
       <ProjectReference Include="..\Blue.Messages\Blue.Messages.csproj" />
       <ProjectReference Include="..\Shared\Shared.csproj" />
-      <ProjectReference Include="..\Yellow.Data\Yellow.Data.csproj" />
       <ProjectReference Include="..\Yellow.Messages\Yellow.Messages.csproj" />
-    </ItemGroup>
-
-
+    </ItemGroup>    
 
 </Project>

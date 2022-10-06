@@ -1,15 +1,11 @@
 ﻿using System.Dynamic;
-using System.Runtime.Intrinsics.Arm;
-using System.Runtime.Intrinsics.X86;
 using LiteDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NServiceBus.Logging;
 using Red.Data.Configuration;
 using Red.Data.Entities;
 using Red.Messages.ServiceComposerEvents;
 using ServiceComposer.AspNetCore;
-using Shared.Configuration;
 
 namespace Red.Data.ViewModelComposition;
 

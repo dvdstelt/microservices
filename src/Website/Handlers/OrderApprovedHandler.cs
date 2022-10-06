@@ -1,31 +1,29 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using LiteDB;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using NServiceBus;
 using Red.Data.Configuration;
 using Red.Data.Entities;
-using Red.Data.ViewModelComposition;
 using Website.Hubs;
 using Yellow.Messages.Events;
 
 namespace Website.Handlers
 {
-    public class OrderAcceptedHandler : IHandleMessages<OrderAccepted>
+    public class OrderApprovedHandler : IHandleMessages<OrderApproved>
     {
         readonly IHubContext<TicketHub> ticketHubContext;
-        readonly ILogger<OrderAcceptedHandler> logger;
+        readonly ILogger<OrderApprovedHandler> logger;
         readonly RedLiteDatabase db;
 
-        public OrderAcceptedHandler(IHubContext<TicketHub> ticketHubContext, ILogger<OrderAcceptedHandler> logger, RedLiteDatabase db)
+        public OrderApprovedHandler(IHubContext<TicketHub> ticketHubContext, ILogger<OrderApprovedHandler> logger, RedLiteDatabase db)
         {
             this.ticketHubContext = ticketHubContext;
             this.logger = logger;
             this.db = db;
         }
 
-        public async Task Handle(OrderAccepted message, IMessageHandlerContext context)
+        public async Task Handle(OrderApproved message, IMessageHandlerContext context)
         {
             if (!context.MessageHeaders.TryGetValue("SignalRConnectionId", out var userConnectionId))
             {
@@ -41,6 +39,7 @@ namespace Website.Handlers
 
             var ticket = new
             {
+                success = true,
                 message.OrderId,
                 TheaterId = theater.Id.ToString(),
                 Theater = theater.Name,

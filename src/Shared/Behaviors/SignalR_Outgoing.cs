@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using NServiceBus.Pipeline;
 
-namespace Yellow.Ticketing.Behaviors
+namespace Shared
 {
     public class SignalR_Outgoing : Behavior<IOutgoingLogicalMessageContext>
     {

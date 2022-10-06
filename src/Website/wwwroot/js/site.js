@@ -21,18 +21,24 @@ connection.start().catch(function (err) {
 });
 
 connection.on('OrderedRegularTicket', function (ticket) {
-    var template = $('#regularticket').html().supplant(ticket);
+    var template;
+
+    if (ticket.success) {
+        template = $('#regularticket').html().supplant(ticket);
+    } else {
+        template = $('#failedticket').html().supplant(ticket);
+    }
     $('.overlay-content .ordering-details').html(template);
 });
 
 connection.on('OrderedLotteryTicket', function (ticket) {
     console.log('OrderedLotteryTicket');
+
     var template = $('#lotteryticket').html().supplant(ticket);
     $('.overlay-content .ordering-details').html(template);
 });
 
-function registerMovieTicket(formValues)
-{
+function registerMovieTicket(formValues) {
     var ticket = {
         MovieId: formValues["movieId"],
         TheaterId: formValues["theatersContext_group"],
@@ -44,5 +50,5 @@ function registerMovieTicket(formValues)
         .catch(function (err) {
             return console.error(err.toString());
         });
-   
+
 }

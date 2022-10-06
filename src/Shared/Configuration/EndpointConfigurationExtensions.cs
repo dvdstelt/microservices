@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using NServiceBus;
 
 namespace Shared.Configuration
@@ -14,6 +12,11 @@ namespace Shared.Configuration
             configureRouting?.Invoke(routing);
 
             endpointConfiguration.UsePersistence<LearningPersistence>();
+            
+            var pipeline = endpointConfiguration.Pipeline;
+            pipeline.Register(new SignalR_Incoming(), "Stores SignalR user identifier into context.");
+            pipeline.Register(new SignalR_Outgoing(), "Propagates SignalR user identifier to outgoing messages.");
+            
 
             var conventions = endpointConfiguration.Conventions();
             conventions.DefiningCommandsAs(t => t.Namespace != null && t.Namespace.EndsWith("Commands"));

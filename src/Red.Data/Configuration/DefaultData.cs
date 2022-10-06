@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Diagnostics;
-using Red.Data.Entities;
+﻿using Red.Data.Entities;
 
 namespace Red.Data.Configuration
 {
