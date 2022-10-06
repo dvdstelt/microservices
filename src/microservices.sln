@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.Ticketing", "Blue.Tick
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.Messages", "Blue.Messages\Blue.Messages.csproj", "{063F3DE8-C4EA-4D4E-B164-C29FD8F8DCB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Red.Email", "Red.Email\Red.Email.csproj", "{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{063F3DE8-C4EA-4D4E-B164-C29FD8F8DCB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{063F3DE8-C4EA-4D4E-B164-C29FD8F8DCB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{063F3DE8-C4EA-4D4E-B164-C29FD8F8DCB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{E729C35C-B46D-4980-8646-EE5E8F375F20} = {054D9480-05DC-43E4-836D-3BF0D4490181}
 		{287B27FA-A8E5-4B06-AC84-4FAC9241F4D9} = {054D9480-05DC-43E4-836D-3BF0D4490181}
 		{063F3DE8-C4EA-4D4E-B164-C29FD8F8DCB7} = {054D9480-05DC-43E4-836D-3BF0D4490181}
+		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747} = {74424689-E864-476F-BAFE-9977B752F47C}
 	EndGlobalSection
 EndGlobal
