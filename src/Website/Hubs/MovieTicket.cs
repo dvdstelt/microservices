@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EventualConsistencyDemo.Hubs
+﻿namespace Website.Hubs
 {
     public class MovieTicket
     {

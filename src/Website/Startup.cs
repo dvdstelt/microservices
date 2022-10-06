@@ -1,17 +1,15 @@
-﻿using EventualConsistencyDemo.Hubs;
-using LiteDB;
+﻿using Blue.Data.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NServiceBus;
 using Red.Data.Configuration;
 using ServiceComposer.AspNetCore;
-using ServiceComposer.AspNetCore.Mvc;
-using Shared.Configuration;
+using Website.Hubs;
+using Yellow.Data.Configuration;
 
-namespace EventualConsistencyDemo
+namespace Website
 {
     public class Startup
     {
@@ -33,9 +31,9 @@ namespace EventualConsistencyDemo
 
             services.AddSignalR(o => o.EnableDetailedErrors = true);
 
-            //services.AddScoped(_ => new LiteRepository(Shared.Configuration.Database.DatabaseConnectionstring));
-            // services.AddScoped<LiteDatabaseFactory>();
-            services.AddScoped<Test>();
+            services.AddScoped<RedLiteDatabase>();
+            services.AddScoped<BlueLiteDatabase>();
+            services.AddScoped<YellowLiteDatabase>();
             services.AddScoped<MovieTickets>();
          
             services.AddMemoryCache();

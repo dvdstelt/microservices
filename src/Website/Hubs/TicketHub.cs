@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.SignalR;
 using NServiceBus;
 using Yellow.Messages.Commands;
 
-namespace EventualConsistencyDemo.Hubs
+namespace Website.Hubs
 {
     public class TicketHub : Hub
     {

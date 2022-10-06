@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using LiteDB;
 using Website.Models;
 
-namespace EventualConsistencyDemo.Controllers
+namespace Website.Controllers
 {
     public class HomeController : Controller
     {

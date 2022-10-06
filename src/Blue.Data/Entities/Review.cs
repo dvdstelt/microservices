@@ -1,4 +1,4 @@
-﻿namespace Red.Data.Entities
+﻿namespace Blue.Data.Entities
 {
     public class Review
     {

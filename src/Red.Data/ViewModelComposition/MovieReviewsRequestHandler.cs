@@ -7,25 +7,23 @@ using ServiceComposer.AspNetCore;
 
 namespace Red.Data.ViewModelComposition;
 
-public class MovieDetailsRequestsHandler : ICompositionRequestsHandler
+public class MovieReviewsRequestHandler : ICompositionRequestsHandler
 {
     readonly RedLiteDatabase db;
 
-    public MovieDetailsRequestsHandler(RedLiteDatabase db)
+    public MovieReviewsRequestHandler(RedLiteDatabase db)
     {
         this.db = db;
     }
     
-    [HttpGet("/movies/{movieurl}")]
+    [HttpGet("/reviews/{movieurl}")]
     public Task Handle(HttpRequest request)
     {
         var movieUrl = (string)request.HttpContext.GetRouteData().Values["movieurl"]!;
         var vm = request.GetComposedResponseModel();
-
-        vm.Movie = db.Query<Movie>().Where(s => s.UrlTitle == movieUrl).Single();
-
-        vm.Theaters = TheatersContext.GetTheaters();
         
-        return Task.CompletedTask;        
+        vm.Movie = db.Query<Movie>().Where(s => s.UrlTitle == movieUrl).Single();
+        
+        return Task.CompletedTask;
     }
 }

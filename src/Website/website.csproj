@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <LangVersion>10</LangVersion>
-    <Nullable>enable</Nullable>
+    <Nullable>annotations</Nullable>
     <ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
     <RootNamespace>Website</RootNamespace>
   </PropertyGroup>
@@ -18,8 +18,10 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\Blue.Data\Blue.Data.csproj" />
     <ProjectReference Include="..\Red.Data\Red.Data.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Yellow.Data\Yellow.Data.csproj" />
     <ProjectReference Include="..\Yellow.Messages\Yellow.Messages.csproj" />
   </ItemGroup>
 

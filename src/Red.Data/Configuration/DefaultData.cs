@@ -1,4 +1,5 @@
-﻿using Red.Data.Entities;
+﻿using Microsoft.AspNetCore.Mvc.Diagnostics;
+using Red.Data.Entities;
 
 namespace Red.Data.Configuration
 {
@@ -10,7 +11,7 @@ namespace Red.Data.Configuration
             {
                 new Movie
                 {
-                    Identifier = Guid.NewGuid(),
+                    Identifier = Guid.Parse("a9e9038d-c02f-410e-9f1d-c5a3c0a24fd4"),
                     UrlTitle = "gameofthrones",
                     Title = "Game of Thrones",
                     Image = "gameofthrones.jpg",
@@ -22,7 +23,6 @@ namespace Red.Data.Configuration
                     ReleaseDate = new DateTime(2019, 05, 19),
                     Showtimes = new List<string> {"19:00"},
                     PricePerTicket = 0D,
-                    PopularityScore = 1000,
                     TicketType = TicketType.DrawingTicket,
                 },
                 //new Movie
@@ -43,7 +43,7 @@ namespace Red.Data.Configuration
                 //},
                 new Movie
                 {
-                    Identifier = Guid.NewGuid(),
+                    Identifier = Guid.Parse("1cc82d5e-6925-4c79-b5f0-f6264088312a"),
                     UrlTitle = "dune",
                     Title = "Dune",
                     Image = "dune.jpg",
@@ -55,7 +55,6 @@ namespace Red.Data.Configuration
                     ReleaseDate = new DateTime(2021, 9, 16),
                     Showtimes = new List<string> {"10:00", "13:00", "15:00", "20:00", "23:00"},
                     PricePerTicket = 20D,
-                    PopularityScore = 500,
                 },
                 // new Movie
                 // {
@@ -74,7 +73,7 @@ namespace Red.Data.Configuration
                 // }
                 new Movie
                 {
-                    Identifier = Guid.NewGuid(),
+                    Identifier = Guid.Parse("17c8b4e4-ef16-4f52-ba5e-4f0a255af8f6"),
                     UrlTitle = "maverick",
                     Title = "Top Gun Maverick",
                     Image = "maverick.jpg",
@@ -85,33 +84,8 @@ namespace Red.Data.Configuration
                     ReleaseDate = new DateTime(2022,04,27),
                     Showtimes = new List<string> { "15:00", "20:00", "23:00" },
                     PricePerTicket = 10D,
-                    PopularityScore = 250
                 }
             };
         }
-
-        public static List<Review> GetDefaultReviews(IEnumerable<Movie> movies)
-        {
-            var gotId = movies.Single(s => s.UrlTitle == "gameofthrones").Identifier;
-            //var jsbId = movies.Single(s => s.UrlTitle == "jayandsilentbobreboot").Identifier;
-            // var tros = movies.Single(s => s.UrlTitle == "riseofskywalker").Identifier;
-            // var tenet = movies.Single(s => s.UrlTitle == "tenet").Identifier;
-            var dune = movies.Single(s => s.UrlTitle == "dune").Identifier;
-            // var freeguy = movies.Single(s => s.UrlTitle == "freeguy").Identifier;
-            var maverick = movies.Single(s => s.UrlTitle == "maverick").Identifier;
-
-            return new List<Review>
-            {
-                new Review() { Identifier = Guid.NewGuid(), MovieIdentifier = gotId, Description = "A riddle: A father and his son fight in the Battle of the Bastards. The father is killed in battle and the son is brought to the Warden of the North to be knighted. The Warden of the North looks at the boy and says: \"I can't knight him, he's my son!\" How can this be?", ReviewedAt = new DateTime(2019, 05, 19, 23, 30, 12) },
-                new Review() { Identifier = Guid.NewGuid(), MovieIdentifier = gotId, Description = "I want more Arya! She's the best!", ReviewedAt = new DateTime(2019, 05, 19, 23, 35, 36) },
-                //new Review() { Id = Guid.NewGuid(), MovieIdentifier = jsbId, Description = "Kevin Smith is my favorite director and this movie is another great piece of work.", ReviewedAt = new DateTime(2019, 10, 8, 12, 12, 12) },
-                //new Review() { Id = Guid.NewGuid(), MovieIdentifier = jsbId, Description = "Snootch to the nootch!!!", ReviewedAt = new DateTime(2019, 10, 9, 13, 45, 18) },
-                new Review() { Identifier = Guid.NewGuid(), MovieIdentifier = dune, Description = "Great visuals, screenplay adaptation is too close to the books though.", ReviewedAt = new DateTime(2021, 10, 8, 8, 14, 56) },
-                new Review() { Identifier = Guid.NewGuid(), MovieIdentifier = dune, Description = "Can't wait to go back to Mordor!", ReviewedAt = new DateTime(2021, 10, 9, 13, 37, 00) },
-                new Review() { Identifier = Guid.NewGuid(), MovieIdentifier = maverick, Description = "This movie needs to been in IMAX! That sound is incredible!", ReviewedAt = new DateTime(2022, 09, 21, 12, 12, 12) },
-                new Review() { Identifier = Guid.NewGuid(), MovieIdentifier = maverick, Description = "Maverick is so much better than the original!", ReviewedAt = new DateTime(2022, 09, 20, 13, 45, 18) },
-            };
-        }
-
     }
 }

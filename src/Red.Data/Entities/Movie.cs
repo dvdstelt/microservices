@@ -14,7 +14,6 @@
         public DateTime ReleaseDate { get; set; }
         
         public double PricePerTicket { get; set; }
-        public int PopularityScore { get; set; }
         public TicketType TicketType { get; set; } = TicketType.RegularTicket;
 
         public List<string> Showtimes { get; set; }

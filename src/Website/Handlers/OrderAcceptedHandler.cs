@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using EventualConsistencyDemo.Hubs;
 using LiteDB;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using NServiceBus;
+using Website.Hubs;
 using Yellow.Messages.Events;
 
 namespace Website.Handlers

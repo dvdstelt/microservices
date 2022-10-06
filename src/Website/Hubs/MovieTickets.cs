@@ -1,25 +1,18 @@
-﻿using System;
-using System.Globalization;
-using System.Threading.Tasks;
-using LiteDB;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using Shared.Configuration;
 
-namespace EventualConsistencyDemo.Hubs
+namespace Website.Hubs
 {
     public class MovieTickets
     {
         readonly IHubContext<TicketHub> hub;
-        readonly LiteRepository db;
         readonly ILogger<MovieTickets> logger;
 
         public MovieTickets(IHubContext<TicketHub> hub, ILogger<MovieTickets> logger)
         {
             this.hub = hub;
             this.logger = logger;
-
-            // this.db = factory.CreateLiteDb(Red.Data.Configuration.Database.DatabaseName);
         }
 
         /// <summary>

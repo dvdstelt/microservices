@@ -1,14 +1,12 @@
 ﻿using System.Text;
-using LiteDB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EventualConsistencyDemo.Controllers
+namespace Website.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly LiteRepository db;
-
+        [HttpGet("/movies")]
         public ActionResult Index()
         {
             return View();
