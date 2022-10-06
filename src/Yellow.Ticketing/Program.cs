@@ -6,6 +6,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using Shared.Configuration;
+using Yellow.Data.Configuration;
 using Yellow.Ticketing.Behaviors;
 
 Log.Logger = new LoggerConfiguration()
@@ -23,15 +24,15 @@ var host = Host.CreateDefaultBuilder(args)
     .UseNServiceBus(context =>
     {
         var endpointConfiguration = new EndpointConfiguration("Yellow.Ticketing").ApplyCommonConfiguration();
-
+        endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
+        
         var pipeline = endpointConfiguration.Pipeline;
         pipeline.Register(new SignalR_Incoming(), "Stores SignalR user identifier into context.");
         pipeline.Register(new SignalR_Outgoing(), "Propagates SignalR user identifier to outgoing messages.");
 
         endpointConfiguration.RegisterComponents(s =>
         {
-            s.ConfigureComponent(() => new LiteRepository(Database.DatabaseConnectionstring(Yellow.Data.Configuration.Database.DatabaseName)),
-                DependencyLifecycle.InstancePerUnitOfWork);
+            s.ConfigureComponent(() => new YellowLiteDatabase(), DependencyLifecycle.InstancePerUnitOfWork);
         });
         
         return endpointConfiguration;

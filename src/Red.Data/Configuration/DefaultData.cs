@@ -25,22 +25,6 @@ namespace Red.Data.Configuration
                     PricePerTicket = 0D,
                     TicketType = TicketType.DrawingTicket,
                 },
-                //new Movie
-                //{
-                //    Id = Guid.NewGuid(),
-                //    UrlTitle = "jayandsilentbobreboot",
-                //    Title = "Jay and Silent Bob Reboot",
-                //    Image = "jayandsilentbobreboot.jpg",
-                //    Rating = 2,
-                //    Description =
-                //        "Jay and Silent Bob return to Hollywood to stop a reboot of &#39;Bluntman and Chronic&#39; movie from getting made.",
-                //    Icons = new List<string> {"16", "alcoholdrugabuse", "explicitlanguage"},
-                //    MovieDetails = "105 minutes | English, Dutch subtitles",
-                //    ReleaseDate = new DateTime(2019, 10, 15),
-                //    Showtimes = new List<string> {"10:00", "15:00", "20:00"},
-                //    PricePerTicket = 10D,
-                //    PopularityScore = 200,
-                //},
                 new Movie
                 {
                     Identifier = Guid.Parse("1cc82d5e-6925-4c79-b5f0-f6264088312a"),
@@ -56,21 +40,6 @@ namespace Red.Data.Configuration
                     Showtimes = new List<string> {"10:00", "13:00", "15:00", "20:00", "23:00"},
                     PricePerTicket = 20D,
                 },
-                // new Movie
-                // {
-                //     Id = Guid.NewGuid(),
-                //     UrlTitle = "freeguy",
-                //     Title = "FreeGuy",
-                //     Image = "freeguy.jpg",
-                //     Rating = 5,
-                //     Description = "A bank teller discovers that he's actually an NPC inside a brutal, open world video game.",
-                //     Icons = new List<string> {"12", "violence", "explicitlanguage" },
-                //     MovieDetails = "115 minutes | English, Dutch subtitles",
-                //     ReleaseDate = new DateTime(2021,08,11),
-                //     Showtimes = new List<string> { "15:00", "20:00", "23:00" },
-                //     PricePerTicket = 10D,
-                //     PopularityScore = 250
-                // }
                 new Movie
                 {
                     Identifier = Guid.Parse("17c8b4e4-ef16-4f52-ba5e-4f0a255af8f6"),

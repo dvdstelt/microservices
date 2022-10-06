@@ -6,7 +6,7 @@
         public Guid UserId { get; set; }
         public Guid MovieIdentifier { get; set; }
         public Guid TheaterIdentifier { get; set; }
-        public Guid TimeIdentifier { get; set; }
+        public string Time { get; set; }
         public int NumberOfTickets { get; set; }
     }
 }

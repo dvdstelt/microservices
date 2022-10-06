@@ -10,4 +10,5 @@ public class Order
     public Guid TheaterIdentifier { get; set; }
     public Guid TimeIdentifier { get; set; }
     public int NumberOfTickets { get; set; }
+    public string MovieTime { get; set; }
 }

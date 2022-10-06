@@ -5,7 +5,7 @@ namespace Yellow.Data.Configuration;
 
 public class YellowLiteDatabase : LiteRepository
 {
-    const string DatabaseName = "yellow.db";
+    public const string DatabaseName = "yellow.db";
 
     public YellowLiteDatabase() : this(Shared.Configuration.Database.DatabaseConnectionstring(DatabaseName))
     {

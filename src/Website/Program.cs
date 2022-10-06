@@ -10,10 +10,12 @@ var host = Host.CreateDefaultBuilder(args)
     // NServiceBus needs to be configured first!
     .UseNServiceBus(hostBuilderContext =>
     {
-        var endpointConfiguration = new EndpointConfiguration("EventualConsistencyDemo");
+        var endpointConfiguration = new EndpointConfiguration("website");
+        endpointConfiguration.UseSerialization<NewtonsoftJsonSerializer>();
+        
         endpointConfiguration.ApplyCommonConfiguration(routingConfig =>
         {
-            routingConfig.RouteToEndpoint(typeof(SubmitOrder), "server");
+            routingConfig.RouteToEndpoint(typeof(SubmitOrder), "yellow.ticketing");
         });
 
         return endpointConfiguration;

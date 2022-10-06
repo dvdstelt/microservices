@@ -28,8 +28,8 @@ namespace Website.Hubs
             {
                 TheaterIdentifier = Guid.Parse(ticket.TheaterId),
                 MovieIdentifier = Guid.Parse(ticket.MovieId),
-                // TODO: Deze fixen
-                //TimeIdentifier = ticket.Time,
+                // TODO: Fix those two
+                Time = ticket.Time,
                 NumberOfTickets = ticket.NumberOfTickets,
                 UserId = Guid.Parse("218d92c4-9c42-4e61-80fa-198b22461f61") // For now, no other users allowed ;-)
             };
