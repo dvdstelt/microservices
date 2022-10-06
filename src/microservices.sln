@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blue.Messages", "Blue.Messa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Red.Email", "Red.Email\Red.Email.csproj", "{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platform", "Platform\Platform.csproj", "{E860DF8D-5169-4ED6-92C9-B86EA479BE3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E65EB04-90F6-4F35-8E2F-B0F3C05DE747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E860DF8D-5169-4ED6-92C9-B86EA479BE3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E860DF8D-5169-4ED6-92C9-B86EA479BE3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E860DF8D-5169-4ED6-92C9-B86EA479BE3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E860DF8D-5169-4ED6-92C9-B86EA479BE3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

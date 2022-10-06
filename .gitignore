@@ -296,3 +296,8 @@ __pycache__/
 
 # LiteDb database
 .database
+
+# Platform Sample
+**/.audit-db
+**/.db
+**/.logs
