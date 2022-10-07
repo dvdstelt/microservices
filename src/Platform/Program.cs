@@ -1,1 +1,1 @@
-﻿Particular.PlatformLauncher.Launch()
+﻿Particular.PlatformLauncher.Launch();

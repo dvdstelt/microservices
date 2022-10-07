@@ -16,7 +16,7 @@ public class SubmitLotteryTicketHandler : IHandleMessages<SubmitLotteryTicket>
 
     public Task Handle(SubmitLotteryTicket message, IMessageHandlerContext context)
     {
-        Log.Info($"Order arrived for movie {message.MovieIdentifier}");
+        Log.Info($"Lottery ticket arrived for movie {message.MovieIdentifier}");
 
         var order = new LotteryTicket
         {

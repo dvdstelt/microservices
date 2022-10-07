@@ -25,17 +25,14 @@ namespace Website.Hubs
         {
             // Connection for this visitor
             var userConnectionId = this.Context.ConnectionId;
-
-            // Add connection identifier to message header
-            var sendOptions = new SendOptions();
-            sendOptions.SetHeader("SignalRConnectionId", userConnectionId);
-            
+           
             // Get movie from database
             var movieId = Guid.Parse(ticket.MovieId);            
             var movie = db.Query<Red.Data.Entities.Movie>()
                 .Where(s => s.Identifier == movieId)
                 .Single();
 
+            #region Deal with lottery ticket
             if (movie.TicketType == TicketType.DrawingTicket)
             {
                 var message = new SubmitLotteryTicket
@@ -46,10 +43,13 @@ namespace Website.Hubs
                     NumberOfTickets = ticket.NumberOfTickets,
                     UserId = Guid.Parse("218d92c4-9c42-4e61-80fa-198b22461f61"), // For now, no other users allowed ;-)
                 };
+
+                await messageSession.Send(message);
                 
                 await movieTickets.ReportOnLottery(ticket, Context.ConnectionId);
                 return;
             }
+            #endregion
             
             // Create the message object
             var order = new SubmitOrder
@@ -63,6 +63,10 @@ namespace Website.Hubs
                 UserId = Guid.Parse("218d92c4-9c42-4e61-80fa-198b22461f61"), // For now, no other users allowed ;-)
             };
 
+            // Add connection identifier to message header
+            var sendOptions = new SendOptions();
+            sendOptions.SetHeader("SignalRConnectionId", userConnectionId);
+            
             // Have NServiceBus serialize it and send it using queues
             await messageSession.Send(order, sendOptions);
 

@@ -16,6 +16,7 @@ var host = Host.CreateDefaultBuilder(args)
         endpointConfiguration.ApplyCommonConfiguration(routingConfig =>
         {
             routingConfig.RouteToEndpoint(typeof(SubmitOrder), "yellow.ticketing");
+            routingConfig.RouteToEndpoint(typeof(SubmitLotteryTicket), "yellow.ticketing");
         });
 
         return endpointConfiguration;
