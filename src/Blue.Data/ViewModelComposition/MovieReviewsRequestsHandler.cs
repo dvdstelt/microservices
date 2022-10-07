@@ -11,10 +11,7 @@ public class MovieReviewsRequestsHandler : ICompositionRequestsHandler
 {
     readonly BlueLiteDatabase db;
 
-    public MovieReviewsRequestsHandler(BlueLiteDatabase db)
-    {
-        this.db = db;
-    }
+    public MovieReviewsRequestsHandler(BlueLiteDatabase db) => this.db = db;
     
     [HttpGet("/reviews/{movieurl}")]
     public Task Handle(HttpRequest request)

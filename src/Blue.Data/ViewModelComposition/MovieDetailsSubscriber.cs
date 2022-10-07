@@ -10,10 +10,7 @@ public class MovieDetailsSubscriber : ICompositionEventsSubscriber
 {
     readonly BlueLiteDatabase db;
 
-    public MovieDetailsSubscriber(BlueLiteDatabase db)
-    {
-        this.db = db;
-    }
+    public MovieDetailsSubscriber(BlueLiteDatabase db) => this.db = db;
     
     [HttpGet("/")]
     public void Subscribe(ICompositionEventsPublisher publisher)

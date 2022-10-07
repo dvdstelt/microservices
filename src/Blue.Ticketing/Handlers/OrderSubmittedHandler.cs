@@ -14,8 +14,9 @@ public class OrderSubmittedHandler : IHandleMessages<OrderSubmitted>
     
     public async Task Handle(OrderSubmitted message, IMessageHandlerContext context)
     {
-        var showings = db.Query<Showing>().Where(v => v.MovieId == message.MovieId && v.TheaterId == message.TheaterId);
-        var showing = showings.Where(t => t.Time == message.Time).SingleOrDefault();
+        var showing = db.Query<Showing>()
+            .Where(v => v.MovieId == message.MovieId && v.TheaterId == message.TheaterId && v.Time == message.Time)
+            .SingleOrDefault();
 
         if (showing == null)
         {
@@ -25,7 +26,6 @@ public class OrderSubmittedHandler : IHandleMessages<OrderSubmitted>
 
         var allMatchingOrders = db.Query<Order>().Where(o =>
             o.MovieId == message.MovieId && o.TheaterId == message.TheaterId && o.Time == message.Time);
-
         var totalTicketsOrdered = allMatchingOrders.Select(s => s.NumberOfTickets).ToList().Sum();
         var totalTicketsLeft = showing.SeatsAvailable - totalTicketsOrdered;
 

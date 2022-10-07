@@ -10,8 +10,7 @@ public class OrderPolicy : Saga<OrderSagaData>,
     IHandleMessages<SeatsDenied>,
     IHandleMessages<SeatsApproved>,
     IHandleMessages<OrderPaid>,
-
-IHandleTimeouts<OrderTimedOut>
+    IHandleTimeouts<OrderTimedOut>
 {
     protected override void ConfigureHowToFindSaga(SagaPropertyMapper<OrderSagaData> mapper)
     {
@@ -38,7 +37,7 @@ IHandleTimeouts<OrderTimedOut>
             NumberOfTickets = message.NumberOfTickets
         });
 
-        await RequestTimeout<OrderTimedOut>(context, TimeSpan.FromSeconds(120));
+        await RequestTimeout<OrderTimedOut>(context, TimeSpan.FromMinutes(2));
     }
 
     public async Task Timeout(OrderTimedOut state, IMessageHandlerContext context)

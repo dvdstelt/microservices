@@ -13,10 +13,7 @@ public class FrontPageRequestsHandler : ICompositionRequestsHandler
 {
     readonly LiteRepository db;
 
-    public FrontPageRequestsHandler(RedLiteDatabase db)
-    {
-        this.db = db;
-    }
+    public FrontPageRequestsHandler(RedLiteDatabase db) => this.db = db;
 
     [HttpGet("/")]
     public async Task Handle(HttpRequest request)

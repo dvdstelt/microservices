@@ -57,7 +57,6 @@ namespace Website.Hubs
                 OrderIdentifier = Guid.NewGuid(),
                 TheaterIdentifier = Guid.Parse(ticket.TheaterId),
                 MovieIdentifier = Guid.Parse(ticket.MovieId),
-                // TODO: Fix those two
                 Time = ticket.Time,
                 NumberOfTickets = ticket.NumberOfTickets,
                 UserId = Guid.Parse("218d92c4-9c42-4e61-80fa-198b22461f61"), // For now, no other users allowed ;-)
@@ -69,7 +68,6 @@ namespace Website.Hubs
             
             // Have NServiceBus serialize it and send it using queues
             await messageSession.Send(order, sendOptions);
-
         }
     }
 }
