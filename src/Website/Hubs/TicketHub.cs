@@ -10,13 +10,11 @@ namespace Website.Hubs
 {
     public class TicketHub : Hub
     {
-        readonly IMessageSession messageSession;
         readonly MovieTickets movieTickets;
         readonly RedLiteDatabase db;
 
-        public TicketHub(IMessageSession messageSession, MovieTickets movieTickets, RedLiteDatabase db)
+        public TicketHub(MovieTickets movieTickets, RedLiteDatabase db)
         {
-            this.messageSession = messageSession;
             this.movieTickets = movieTickets;
             this.db = db;
         }
@@ -50,24 +48,6 @@ namespace Website.Hubs
                 return;
             }
             #endregion
-            
-            // Create the message object
-            var order = new SubmitOrder
-            {
-                OrderIdentifier = Guid.NewGuid(),
-                TheaterIdentifier = Guid.Parse(ticket.TheaterId),
-                MovieIdentifier = Guid.Parse(ticket.MovieId),
-                Time = ticket.Time,
-                NumberOfTickets = ticket.NumberOfTickets,
-                UserId = Guid.Parse("218d92c4-9c42-4e61-80fa-198b22461f61"), // For now, no other users allowed ;-)
-            };
-
-            // Add connection identifier to message header
-            var sendOptions = new SendOptions();
-            sendOptions.SetHeader("SignalRConnectionId", userConnectionId);
-            
-            // Have NServiceBus serialize it and send it using queues
-            await messageSession.Send(order, sendOptions);
         }
     }
 }
