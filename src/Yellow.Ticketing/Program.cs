@@ -26,7 +26,7 @@ var host = Host.CreateDefaultBuilder(args)
 
         endpointConfiguration.RegisterComponents(s =>
         {
-            s.ConfigureComponent(() => new YellowLiteDatabase(), DependencyLifecycle.InstancePerUnitOfWork);
+            s.AddScoped<YellowLiteDatabase>();
         });
         
         return endpointConfiguration;

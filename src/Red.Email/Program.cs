@@ -26,7 +26,7 @@ var host = Host.CreateDefaultBuilder(args)
 
         endpointConfiguration.RegisterComponents(s =>
         {
-            s.ConfigureComponent(() => new RedLiteDatabase(), DependencyLifecycle.InstancePerUnitOfWork);
+            s.AddScoped<RedLiteDatabase>();
         });
         
         return endpointConfiguration;

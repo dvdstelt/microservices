@@ -34,6 +34,6 @@ public class OrderDeniedHandler : IHandleMessages<OrderDenied>
             message.OrderId,
         };
         
-        await ticketHubContext.Clients.Client(userConnectionId).SendAsync("OrderedRegularTicket", ticket);
+        await ticketHubContext.Clients.Client(userConnectionId).SendAsync("OrderedRegularTicket", ticket, context.CancellationToken);
     }
 }

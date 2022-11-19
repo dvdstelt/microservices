@@ -49,7 +49,7 @@ namespace Website.Handlers
                 NumberOfTickets = message.NumberOfTickets
             };
 
-            await ticketHubContext.Clients.Client(userConnectionId).SendAsync("OrderedRegularTicket", ticket);
+            await ticketHubContext.Clients.Client(userConnectionId).SendAsync("OrderedRegularTicket", ticket, context.CancellationToken);
         }
     }
 }
