@@ -9,7 +9,6 @@ using Red.Data.Configuration;
 using ServiceComposer.AspNetCore;
 using Website.Hubs;
 using Yellow.Data.Configuration;
-using NServiceBus.Hosting.Helpers;
 using AssemblyScanner = NServiceBus.Hosting.Helpers.AssemblyScanner;
 
 namespace Website
