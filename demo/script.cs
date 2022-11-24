@@ -194,7 +194,7 @@ orderCollection.Insert(new Order() { Identifier = message.OrderId ,MovieId = mes
 // ### OrderPolicy.cs
 // Snippet#26
 IHandleMessages<SeatsDenied>,
-IHandleMessages<SeatsApproved>,
+IHandleMessages<SeatsApproved>
 
 // Snippet#27
 public async Task Handle(SeatsDenied message, IMessageHandlerContext context)
@@ -234,6 +234,10 @@ if (!context.MessageHeaders.TryGetValue("SignalRConnectionId", out var userConne
     return;
 }
 
+// Snippet#30a
+// Add to ctor
+IMediator mediator
+
 // Snippet#30
 var notification = new MyNotification();
 notification.MovieId = message.MovieId;
@@ -245,10 +249,8 @@ var ticket = new
 {
     success = true,
     message.OrderId,
-    TheaterId = theater.Id.ToString(),
-    Theater = theater.Name,
-    MovieId = movie.Identifier.ToString(),
-    MovieTitle = movie.Title,
+    theater = notification.TheaterName,
+    movieTitle = notification.MovieTitle,
     Time = message.Time,
     NumberOfTickets = message.NumberOfTickets
 };
