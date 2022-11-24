@@ -26,7 +26,7 @@ var host = Host.CreateDefaultBuilder(args)
         
         endpointConfiguration.RegisterComponents(s =>
         {
-            s.ConfigureComponent(() => new BlueLiteDatabase(), DependencyLifecycle.InstancePerUnitOfWork);
+            s.AddScoped<BlueLiteDatabase>();
         });
         
         return endpointConfiguration;
