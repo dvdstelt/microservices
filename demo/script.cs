@@ -51,10 +51,6 @@ return Task.CompletedTask;
 
 // ### OrderPolicy.cs in Yellow.Ticketing
 // Snippet#8
-public class OrderPolicy : Saga<OrderSagaData>,
-    IAmStartedByMessages<SubmitOrder>,
-{    
-}
 
 // Snippet#9
 public class OrderPolicy : Saga<OrderSagaData>,
@@ -239,11 +235,11 @@ if (!context.MessageHeaders.TryGetValue("SignalRConnectionId", out var userConne
 }
 
 // Snippet#30
-//
-// *** TODO: This needs to be fixed! This violates the service boundary!
-//
-var movie = db.Query<Red.Data.Entities.Movie>().Where(s => s.Identifier == message.MovieId).Single();
-var theater = TheatersContext.GetTheaters().Single(s => s.Id == message.TheaterId);
+var notification = new MyNotification();
+notification.MovieId = message.MovieId;
+notification.TheaterId = message.TheaterId;
+
+await mediator.Publish(notification, context.CancellationToken);
 
 var ticket = new
 {
